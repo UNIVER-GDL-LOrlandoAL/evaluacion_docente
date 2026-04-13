@@ -257,12 +257,15 @@ class PrincipalController extends Controller
     {
         $alumnos = new AlumnosGrupos();
         $alumnos = $alumnos->whereNull('alumno_id')->get();
+        $alumnos = $alumnos->whereNull('alumno_id')->get();
 
         foreach ($alumnos as $alumno)
         {
 
             $cambio = AlumnosGrupos::where('id_pwc',$alumno->id_pwc)->get();
+            $cambio = AlumnosGrupos::where('id_pwc',$alumno->id_pwc)->get();
             foreach ($cambio as $cambio){
+                $usuario = Alumnos::where('id_pwc',$cambio->id_pwc)->first();
                 $usuario = Alumnos::where('id_pwc',$cambio->id_pwc)->first();
                 $cambio->alumno_id = $usuario->id;
                 $cambio->save();
@@ -282,8 +285,10 @@ class PrincipalController extends Controller
         {
 
             $cambio = AlumnosGrupos::whereNull('grupo_id')->get();
+            $cambio = AlumnosGrupos::whereNull('grupo_id')->get();
             foreach ($cambio as $cambio){
                 $usuario = Grupos::where('descripcion',$cambio->grupo)->first();
+                //dd($cambio);
                 //dd($cambio);
                 $cambio->grupo_id = $usuario->id;
                 $cambio->save();

@@ -37638,6 +37638,7 @@ select {
 
   .sm\:bg-hero-pattern {
     background-image: url('/img/eva.png');
+    background-image: url('/img/eva.png');
   }
 
   .sm\:from-transparent {
@@ -69474,6 +69475,7 @@ select {
   }
 
   .md\:bg-hero-pattern {
+    background-image: url('/img/eva.png');
     background-image: url('/img/eva.png');
   }
 
@@ -101312,6 +101314,7 @@ select {
 
   .lg\:bg-hero-pattern {
     background-image: url('/img/eva.png');
+    background-image: url('/img/eva.png');
   }
 
   .lg\:from-transparent {
@@ -133149,6 +133152,7 @@ select {
 
   .xl\:bg-hero-pattern {
     background-image: url('/img/eva.png');
+    background-image: url('/img/eva.png');
   }
 
   .xl\:from-transparent {
@@ -164985,6 +164989,7 @@ select {
   }
 
   .\32xl\:bg-hero-pattern {
+    background-image: url('/img/eva.png');
     background-image: url('/img/eva.png');
   }
 
