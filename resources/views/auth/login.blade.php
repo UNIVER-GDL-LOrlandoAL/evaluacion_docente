@@ -9,13 +9,13 @@
         @endif
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <span class="ml-2 text-3xl text-black text-center font-bold"><h1>Bienvenido a la Evaluación Docente</h1></span>
+            {{--<span class="ml-2 text-3xl text-black text-center font-bold"><h1>Bienvenido a la Evaluación Docente</h1></span>--}}
             <span class="ml-2 text-base text-gray-600 text-center font-medium"><h3>Es muy importante para nosotros conocer tu opinión sobre la conducción de tus cursos.</h3></span>
             <span class="ml-2 text-base text-gray-600 text-center font-medium"><h4>Ingresa tu ID en usuario y en contraseña pones tu CURP para comenzar:</h4></span><br>
 
             <div>
                 <x-jet-label value="{{ __('Usuario / ID pwc') }}" />
-                <x-jet-input class="block mt-1 w-full" type="text"  name="username" :value="old('username')" required autofocus />
+                <x-jet-input class="block mt-1 w-full" type="text"  placeholder="000008807" name="username" :value="old('username')" required autofocus />
             </div>
 
             <div class="mt-4">
