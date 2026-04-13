@@ -28,9 +28,9 @@
    php_flag display_errors Off
    php_value max_execution_time 3000
    php_value max_input_time 60
-   php_value max_input_vars 1000
+   php_value max_input_vars 3000
    php_value memory_limit 512M
-   php_value post_max_size 8M
+   php_value post_max_size 512M
    php_value session.gc_maxlifetime 1440
    php_value session.save_path "/var/cpanel/php/sessions/ea-php81"
    php_value upload_max_filesize 200M
@@ -40,9 +40,9 @@
    php_flag display_errors Off
    php_value max_execution_time 3000
    php_value max_input_time 60
-   php_value max_input_vars 1000
+   php_value max_input_vars 3000
    php_value memory_limit 512M
-   php_value post_max_size 8M
+   php_value post_max_size 512M
    php_value session.gc_maxlifetime 1440
    php_value session.save_path "/var/cpanel/php/sessions/ea-php81"
    php_value upload_max_filesize 200M

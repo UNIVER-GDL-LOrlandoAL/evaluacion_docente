@@ -5713,6 +5713,16 @@ select {
 
 .bg-hero-pattern {
   background-image: url('/img/eva.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+@media (min-width: 768px){
+	.bg-hero-pattern {
+		background-size: cover;
+		background-position: center center;
+	}
 }
 
 .from-transparent {

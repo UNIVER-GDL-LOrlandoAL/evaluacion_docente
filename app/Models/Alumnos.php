@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alumnos extends Model
 {
     use HasFactory;
+    
+    public function plantel()
+{
+    return $this->belongsTo(Planteles::class, 'plantel_id');
+}
 }
