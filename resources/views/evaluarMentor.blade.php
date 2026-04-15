@@ -22,8 +22,7 @@
                         <thead class="justify-between">
                             <tr class="bg-gray-800">
                                 <th class="px-4 sm:px-16 py-2 text-left">
-                                    <span class="text-gray-300">¿Cómo evalúas la atención de tu coordinador
-                                        académico?</span>
+                                    <span class="text-gray-300">¿Cómo evalúas la atención de tu coordinador académico?</span>
                                 </th>
                                 <th class="px-4 sm:px-16 py-2">
                                 </th>
