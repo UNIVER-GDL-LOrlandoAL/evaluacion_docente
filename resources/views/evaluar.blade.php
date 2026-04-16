@@ -12,29 +12,38 @@
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Marca el enunciado que mejor representa
-            tu opinión:</h2>
-        <br>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+            <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Marca el enunciado que mejor representa tu opinión:</h2>
+        </div>
         @foreach ($preguntas as $pregunta)
             @if ($pregunta->id == 1)
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Conocimiento y dominio de la
-                    materia:</h2>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+                    <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Conocimiento y dominio de la materia:</h2>
+                </div>
             @elseif($pregunta->id == 5)
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
                 <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Comunicación: </h2>
+            </div>
             @elseif($pregunta->id == 9)
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Uso de tecnología y recursos:
-                </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Uso de tecnología y recursos:</h2>
+            </div>
             @elseif($pregunta->id == 11)
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Metodología de enseñanza:
-                </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Metodología de enseñanza:</h2>
+            </div>
             @elseif($pregunta->id == 14)
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
                 <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Interacción y apoyo: </h2>
+            </div>
             @elseif($pregunta->id == 17)
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Valores y ética del docente:
-                </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Valores y ética del docente:</h2>
+            </div>
             @elseif($pregunta->id == 21)
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Cumplimiento del programa y
-                    modelo: </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Cumplimiento del programa y modelo: </h2>
+            </div>
             @endif
             <div class="py-2">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

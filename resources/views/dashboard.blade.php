@@ -7,14 +7,19 @@
         </h2>
     </x-slot>
     <br>
-    @if($finalizo == 1)
-        <h1 class="text-center font-semibold text-xl text-gray-800 leading-tight">Muchas gracias por tu participación.
-            Tus respuestas nos sirven para mejorar.</h1>
-    @else
-     <h1 class="text-center font-semibold text-xl text-gray-800 leading-tight"> Los datos en la presente encuesta serán tratados con estricta confidencialidad y en apego a la protección de datos,
-     el énfasis de la encuesta es con la intención de mejorar, identificar áreas de oportunidad y conocer nuestras fortalezas.</h1>
-
-    @endif
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
+        @if($finalizo == 1)
+            <h1 class="text-center font-semibold text-lg sm:text-sm text-gray-800 leading-tight p-4 bg-green-50 rounded-lg border border-green-200">
+                Muchas gracias por tu participación.<br class="hidden sm:block">
+                Tus respuestas nos sirven para mejorar.
+            </h1>
+        @else
+            <h1 class="text-center font-medium text-lg sm:text-xl text-gray-700 leading-relaxed p-4 bg-blue-50 rounded-lg border border-blue-100">
+                Los datos en la presente encuesta serán tratados con estricta confidencialidad y en apego a la protección de datos.<br class="hidden sm:block">
+                El énfasis de la encuesta es con la intención de mejorar, identificar áreas de oportunidad y conocer nuestras fortalezas.
+            </h1>
+        @endif
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -161,23 +166,18 @@
                 <!-- TABLE END -->
   <!-- **********************************   fin tabla ***************************************-->
             </div>
-            <br>
-        @if($finalizo == 1 AND $EvaluaContestadas AND $EvaluaContestadas)
-                <form method="POST" action="{{ route('logout') }}">
-                <div class="flex justify-between"  >
-
+            @if($finalizo == 1 AND $EvaluaContestadas AND $EvaluaContestadas)
+                <div class="mt-8 mb-4 flex justify-center">
+                    <form method="POST" action="{{ route('logout') }}" class="w-full sm:w-auto">
                         @csrf
-
-
-
-                    <div></div>
-                    <div><button onclick="event.preventDefault(); this.closest('form').submit();" href="{{ route('logout') }}"  type="button" class="focus:outline-none text-white text-sm py-3 px-20 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-200">Salir</button></div>
-                    <div></div>
-
+                        <button onclick="event.preventDefault(); this.closest('form').submit();"
+                                type="button"
+                                class="w-full sm:w-auto focus:outline-none text-white font-semibold text-base py-3 px-12 rounded-md bg-gray-800 hover:bg-gray-700 transition duration-300 shadow-md transform hover:scale-105">
+                            Salir
+                        </button>
+                    </form>
                 </div>
-                </form>
-                @endif
-
+            @endif
         </div>
 
     </div>
