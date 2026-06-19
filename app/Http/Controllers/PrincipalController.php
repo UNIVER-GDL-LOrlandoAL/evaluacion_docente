@@ -54,7 +54,6 @@ class PrincipalController extends Controller
     }
     public function store(Request $request)
     {
-
         $resultados = new ResultadosMentorCoordina();
         $resultados->coordinador = $request->coordinador;
         $resultados->porCoor = $request->porCoordi;
