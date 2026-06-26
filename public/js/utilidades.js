@@ -1,3 +1,22 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    const formulario = document.getElementById('formEvaluacion');
+    const botonSubmit = document.getElementById('btnSubmit');
+
+    if (formulario && botonSubmit) {
+
+        formulario.addEventListener('submit', function(e) {
+            botonSubmit.disabled = true;
+
+            botonSubmit.innerHTML = 'Enviando...';
+
+            botonSubmit.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            botonSubmit.classList.add('bg-gray-400', 'cursor-not-allowed');
+
+        });
+    }
+});
+
 function toggleComentario(idTextarea, checkbox) {
     const textarea = document.getElementById(idTextarea);
 
