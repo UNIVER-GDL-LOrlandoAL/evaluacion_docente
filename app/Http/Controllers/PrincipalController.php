@@ -54,7 +54,6 @@ class PrincipalController extends Controller
     }
     public function store(Request $request)
     {
-
         $resultados = new ResultadosMentorCoordina();
         $resultados->coordinador = $request->coordinador;
         $resultados->porCoor = $request->porCoordi;
@@ -66,16 +65,52 @@ class PrincipalController extends Controller
         return redirect('principal');
 
     }
+
+    /**
+    * Muestra la vista con la evaluación de los mentores y coordinadores del alumno.
+    *
+    * *[Actualización 26/06/2026 - OrlandoAL]
+    * - Se modificó la lógica para soportar el manejo de múltiples mentores y coordinadores.
+    * - El método ahora consulta la base de datos utilizando el 'plantel_id' y 'grupo_id'
+    *    del alumno autenticado para diferenciar y obtener al personal académico correspondiente.
+    * - Incluye una validación de respaldo (fallback) para asignar al coordinador general
+    *    del plantel en caso de no existir uno asignado específicamente al grupo.
+    *
+    * @param  int  $id
+    * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
+    */
     public function show($id)
     {
-        $user = Auth::user()->load('alumno.plantel');
+        $user = Auth::user();
+        $username = $user->username;
 
-        if ($user && $user->alumno && $user->alumno->plantel) {
-            $plantel = $user->alumno->plantel;
-        } else {
+        $plantel_id = DB::table('alumnos')->where('id_pwc', $username)->value('plantel_id');
+        $grupo_id = DB::table('alumnos_grupos')->where('id_pwc', $username)->value('grupo_id');
+
+        if (!$plantel_id) {
             return redirect()->back()->with('error', 'No se encontró la información del plantel para este usuario.');
         }
-        return view('evaluarMentor', compact('plantel'));
+        $coordinadores = DB::table('mentores_coordinadores')
+            ->where('plantel_id', $plantel_id)
+            ->where('grupo_id', $grupo_id)
+            ->where('isCoordinador', 1)
+            ->get();
+
+        if ($coordinadores->isEmpty()) {
+            $coordinadores = DB::table('mentores_coordinadores')
+                ->where('plantel_id', $plantel_id)
+                ->where('grupo_id', '999999')
+                ->where('isCoordinador', 1)
+                ->get();
+        }
+
+        $mentores = DB::table('mentores_coordinadores')
+            ->where('plantel_id', $plantel_id)
+            ->where('grupo_id', $grupo_id)
+            ->where('isMentor', 1)
+            ->get();
+
+        return view('evaluarMentor', compact('coordinadores', 'mentores'));
     }
     /**
      * Show the form for editing the specified resource.

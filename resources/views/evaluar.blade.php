@@ -8,7 +8,7 @@
     </x-slot>
     <!-- Fin de header -->
 
-    <form method="POST" action="{{ route('principal.update', $docente->id) }}" aria-label="{{ __('Evaluacion') }}"
+    <form id="formEvaluacion" method="POST" action="{{ route('principal.update', $docente->id) }}" aria-label="{{ __('Evaluacion') }}"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -119,9 +119,14 @@
         <!--************************************************************   Textarea   ***************************************************************-->
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-            <label for="observaciones" class="block font-semibold text-gray-700 mb-2">
-                Con la finalidad de mejorar, ¿podrías darnos tus comentarios al respecto?
-            </label>
+            <div class="flex items-center mb-2 justify-between">
+                        <label for="observaciones" class="block font-semibold text-gray-700 mb-2">Con la finalidad de mejorar, ¿podrías darnos tus comentarios al respecto?</label>
+
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 transition duration-150 ease-in-out" onclick="toggleComentario('observaciones', this)">
+                            <span class="ml-2 text-sm text-gray-600 font-medium">No deseo agregar comentarios</span>
+                        </label>
+                    </div>
             <textarea required id="observaciones" name="observaciones" rows="4"
                 class="w-full resize-y border-gray-300 shadow-sm rounded-md text-gray-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
                 placeholder="Escribe tus comentarios aquí..."></textarea>
@@ -134,11 +139,11 @@
                     class="w-full sm:w-auto text-center transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-10 rounded-md shadow-md">
                     Cancelar
                 </a>
-                <button
-                    type="submit"class="w-full sm:w-auto transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-md shadow-md">
+                <button id="btnSubmit" type="submit"class="w-full sm:w-auto transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-md shadow-md">
                     Calificar
                 </button>
             </div>
         </div>
     </form>
+    <script src="{{ asset('js/utilidades.js') }}"></script>
 </x-app-layout>
