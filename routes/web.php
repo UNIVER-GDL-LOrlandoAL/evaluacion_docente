@@ -16,8 +16,13 @@ Route::get('/pruebas', function(){
     $plantel_id = DB::table('alumnos')->where('id_pwc', $usuario)->value('plantel_id');
 
     $coordinadores = DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', $grupo_id)->where('isCoordinador', 1)->get();
+    //* Si coordinadores por grupo falla almacenara un array vacio.
+    if($coordinadores->isEmpty()){
+        //*Si Coordinadores viene vacio realizamos una consulta para sacar el mentor general del plantel este mentor puede o no existir.
+        $coordinadores=DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', '999999')->where('isCoordinador', 1)->get();
+    }
+    //*Si no existe Coordinador general ni coordinador asignado por grupo entonces pasamos coordinadores vacio y lo tratamos en el frente.
     $mentores = DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', $grupo_id)->where('isMentor', 1)->get();
-
     return view('pruebas', compact('coordinadores', 'mentores'));
 });
 

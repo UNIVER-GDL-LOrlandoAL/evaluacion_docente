@@ -2,11 +2,11 @@
     <x-slot name="header">
         <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Evalúa a tu Coordinador y Mentor</h2>
     </x-slot>
+
     <form method="POST" action="{{ route('principal.store') }}" aria-label="{{ __('Evaluacion') }}" enctype="multipart/form-data">
         @csrf
         <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight mt-6">Marca el enunciado que mejor representa tu opinión:</h2>
 
-        <!-- ************************* SECCIÓN COORDINADOR ************************* -->
         <div class="py-6">
             <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight mb-4">
                 Coordinador:
@@ -22,7 +22,6 @@
             </h2>
 
             @if(isset($coordinadores) && $coordinadores->isNotEmpty())
-                <!-- Mostrar tabla y textarea si SÍ hay coordinador -->
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <table class="min-w-full table-auto">
@@ -61,26 +60,31 @@
                 </div>
 
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-                    <label for="porCoordi" class="font-semibold text-gray-500">¿Por qué?</label><br>
-                    <textarea required name="porCoordi" rows="4"
+                    <div class="flex items-center mb-2 justify-between">
+                        <label for="porCoordi" class="font-semibold text-gray-500">¿Por qué?</label>
+
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 transition duration-150 ease-in-out" onclick="toggleComentario('porCoordi', this)">
+                            <span class="ml-2 text-sm text-gray-600 font-medium">No deseo agregar comentarios</span>
+                        </label>
+                    </div>
+
+                    <textarea required id="porCoordi" name="porCoordi" rows="4"
                         class="w-full resize-y border-gray-300 shadow-sm rounded-md text-gray-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
                         placeholder="Escribe tus comentarios aquí..."></textarea>
                 </div>
             @else
-                <!-- Mostrar mensaje e inputs ocultos si NO hay coordinador -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 text-center">
                     <div class="bg-gray-100 border border-gray-300 text-gray-600 py-6 rounded-lg shadow-sm">
                         <p class="font-semibold text-lg">Actualmente no cuentas con un coordinador asignado.</p>
-                        <p class="text-sm mt-1">No es necesario realizar esta evaluación.</p>
+                        <p class="text-sm mt-1">No es necesario realizar esta parte de la evaluación.</p>
                     </div>
-                    <!-- Datos pre-rellenados invisibles para que el controlador no marque error -->
                     <input type="hidden" name="coordinador" value="0">
                     <input type="hidden" name="porCoordi" value="No Asignado">
                 </div>
             @endif
         </div>
 
-        <!-- ************************* SECCIÓN MENTOR ************************* -->
         <div class="py-6">
             <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight mb-4">
                 Mentor:
@@ -96,7 +100,6 @@
             </h2>
 
             @if(isset($mentores) && $mentores->isNotEmpty())
-                <!-- Mostrar tabla y textarea si SÍ hay mentor -->
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <table class="min-w-full table-auto">
@@ -135,26 +138,31 @@
                 </div>
 
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-                    <label for="observaciones" class="font-semibold text-gray-500">¿Por qué?</label><br>
-                    <textarea required id="observaciones" name="observaciones" rows="4"
+                    <div class="flex items-center mb-2 justify-between">
+                        <label for="porMentor" class="font-semibold text-gray-500">¿Por qué?</label>
+
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 transition duration-150 ease-in-out" onclick="toggleComentario('porMentor', this)">
+                            <span class="ml-2 text-sm text-gray-600 font-medium">No deseo agregar comentarios</span>
+                        </label>
+                    </div>
+
+                    <textarea required id="porMentor" name="porMentor" rows="4"
                         class="w-full resize-y border-gray-300 shadow-sm rounded-md text-gray-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
                         placeholder="Escribe tus comentarios aquí..."></textarea>
                 </div>
             @else
-                <!-- Mostrar mensaje e inputs ocultos si NO hay mentor -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 text-center">
                     <div class="bg-gray-100 border border-gray-300 text-gray-600 py-6 rounded-lg shadow-sm">
                         <p class="font-semibold text-lg">Actualmente no cuentas con un mentor asignado.</p>
                         <p class="text-sm mt-1">No es necesario realizar esta evaluación.</p>
                     </div>
-                    <!-- Datos pre-rellenados invisibles para que el controlador no marque error -->
                     <input type="hidden" name="mentor" value="0">
-                    <input type="hidden" name="observaciones" value="No Asignado">
+                    <input type="hidden" name="porMentor" value="No Asignado">
                 </div>
             @endif
         </div>
 
-        <!-- ************************* BOTONES ************************* -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 mt-4">
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="{{ route('principal.index') }}"
@@ -168,4 +176,5 @@
             </div>
         </div>
     </form>
+    <script src="{{ asset('js/utilidades.js') }}"></script>
 </x-app-layout>
