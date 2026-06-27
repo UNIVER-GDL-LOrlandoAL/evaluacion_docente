@@ -17,32 +17,53 @@
         </div>
         @foreach ($preguntas as $pregunta)
             @if ($pregunta->id == 1)
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                    <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Conocimiento y dominio de la materia:</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Conocimiento y dominio de la materia</h2>
                 </div>
+            </div>
             @elseif($pregunta->id == 5)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Comunicación: </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Comunicación</h2>
+                </div>
             </div>
             @elseif($pregunta->id == 9)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Uso de tecnología y recursos:</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Uso de tecnología y recursos</h2>
+                </div>
             </div>
             @elseif($pregunta->id == 11)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Metodología de enseñanza:</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Metodología de enseñanza</h2>
+                </div>
             </div>
             @elseif($pregunta->id == 14)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Interacción y apoyo: </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Interacción y apoyo</h2>
+                </div>
             </div>
             @elseif($pregunta->id == 17)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Valores y ética del docente:</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Valores y ética del docente</h2>
+                </div>
             </div>
             @elseif($pregunta->id == 21)
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
-                <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Cumplimiento del programa y modelo: </h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-6">
+                <div class="flex items-center border-b border-gray-300 pb-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                    <h2 class="font-semibold text-xl text-gray-700 tracking-wide">Cumplimiento del programa y modelo</h2>
+                </div>
             </div>
             @endif
             <div class="py-2">
@@ -134,7 +155,7 @@
 
         <!--************************************************************   Botones   ****************************************************************-->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pb-12"> <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
                 <a href="{{ route('principal.index') }}"
                     class="w-full sm:w-auto text-center transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-10 rounded-md shadow-md">
                     Cancelar

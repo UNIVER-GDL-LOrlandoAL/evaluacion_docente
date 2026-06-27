@@ -155,7 +155,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 text-center">
                     <div class="bg-gray-100 border border-gray-300 text-gray-600 py-6 rounded-lg shadow-sm">
                         <p class="font-semibold text-lg">Actualmente no cuentas con un mentor asignado.</p>
-                        <p class="text-sm mt-1">No es necesario realizar esta evaluación.</p>
+                        <p class="text-sm mt-1">No es necesario realizar esta parte de la evaluación.</p>
                     </div>
                     <input type="hidden" name="mentor" value="0">
                     <input type="hidden" name="porMentor" value="No Asignado">
