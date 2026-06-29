@@ -7,7 +7,6 @@
 
     </x-slot>
     <!-- Fin de header -->
-
     <form id="formEvaluacion" method="POST" action="{{ route('principal.update', $docente->id) }}" aria-label="{{ __('Evaluacion') }}"
         enctype="multipart/form-data">
         @csrf

@@ -163,7 +163,7 @@
             @endif
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 mt-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 mt-4">
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="{{ route('principal.index') }}"
                     class="w-full sm:w-auto text-center transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-10 rounded-md shadow-md">
