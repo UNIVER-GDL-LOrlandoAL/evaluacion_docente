@@ -108,6 +108,14 @@ class PrincipalController extends Controller
             ->where('isMentor', 1)
             ->get();
 
+        if ($mentores->isEmpty()) {
+            $mentores = DB::table('mentores_coordinadores')
+                ->where('plantel_id', $plantel_id)
+                ->where('grupo_id', '999999')
+                ->where('isMentor', 1)
+                ->get();
+        }
+
         return view('evaluarMentor', compact('coordinadores', 'mentores'));
     }
     /**
