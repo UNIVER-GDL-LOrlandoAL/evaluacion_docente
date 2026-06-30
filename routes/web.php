@@ -1,10 +1,29 @@
 <?php
 
+use GuzzleHttp\Psr7\Query;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 //* Inicio de sesion para alumnos
 
 Route::get('/', function () {
     return view('auth.login');
+});
+
+Route::get('/pruebas', function(){
+    $usuario = Auth::user()->username;
+    $grupo_id = DB::table('alumnos_grupos')->where('id_pwc', $usuario)->value('grupo_id');
+    $plantel_id = DB::table('alumnos')->where('id_pwc', $usuario)->value('plantel_id');
+
+    $coordinadores = DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', $grupo_id)->where('isCoordinador', 1)->get();
+    //* Si coordinadores por grupo falla almacenara un array vacio.
+    if($coordinadores->isEmpty()){
+        //*Si Coordinadores viene vacio realizamos una consulta para sacar el mentor general del plantel este mentor puede o no existir.
+        $coordinadores=DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', '999999')->where('isCoordinador', 1)->get();
+    }
+    //*Si no existe Coordinador general ni coordinador asignado por grupo entonces pasamos coordinadores vacio y lo tratamos en el frente.
+    $mentores = DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', $grupo_id)->where('isMentor', 1)->get();
+    return view('pruebas', compact('coordinadores', 'mentores'));
 });
 
 
