@@ -12,9 +12,9 @@
                 Coordinador:
                 <span class="text-blue-600">
                     @if(isset($coordinadores) && $coordinadores->isNotEmpty())
-                    @foreach($coordinadores as $coordinador)
-                    {{ $coordinador->nombre }} @if(!$loop->last), @endif
-                    @endforeach
+                        @foreach($coordinadores->unique('nombre') as $coordinador)
+                            {{ $coordinador->nombre }} @if(!$loop->last), @endif
+                        @endforeach
                     @else
                     No Asignado
                     @endif
@@ -90,9 +90,9 @@
                 Mentor:
                 <span class="text-blue-600">
                     @if(isset($mentores) && $mentores->isNotEmpty())
-                    @foreach($mentores as $mentor)
-                    {{ $mentor->nombre }} @if(!$loop->last), @endif
-                    @endforeach
+                        @foreach($mentores->unique('nombre') as $mentor)
+                            {{ $mentor->nombre }} @if(!$loop->last), @endif
+                        @endforeach
                     @else
                     No Asignado
                     @endif
