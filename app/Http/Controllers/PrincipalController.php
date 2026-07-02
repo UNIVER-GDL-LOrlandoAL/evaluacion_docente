@@ -91,6 +91,7 @@ class PrincipalController extends Controller
         $coordinadores = DB::table('mentores_coordinadores')
             ->where('plantel_id', $plantel_id)
             ->where('grupo_id', $grupo_id)
+            ->where('isMentor', 0)
             ->where('isCoordinador', 1)
             ->get();
 
@@ -98,6 +99,7 @@ class PrincipalController extends Controller
             $coordinadores = DB::table('mentores_coordinadores')
                 ->where('plantel_id', $plantel_id)
                 ->where('grupo_id', '999999')
+                ->where('isMentor', 0)
                 ->where('isCoordinador', 1)
                 ->get();
         }
@@ -106,6 +108,7 @@ class PrincipalController extends Controller
             ->where('plantel_id', $plantel_id)
             ->where('grupo_id', $grupo_id)
             ->where('isMentor', 1)
+            ->where('isCoordinador', 0)
             ->get();
 
         if ($mentores->isEmpty()) {
@@ -113,6 +116,7 @@ class PrincipalController extends Controller
                 ->where('plantel_id', $plantel_id)
                 ->where('grupo_id', '999999')
                 ->where('isMentor', 1)
+                ->where('isCoordinador', 0)
                 ->get();
         }
 
