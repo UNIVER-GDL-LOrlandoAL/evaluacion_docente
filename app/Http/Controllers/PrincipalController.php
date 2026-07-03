@@ -55,8 +55,10 @@ class PrincipalController extends Controller
     {
         $resultados = new ResultadosMentorCoordina();
         $resultados->coordinador = $request->coordinador;
+        $resultados->resultado_coordinador = $request->resultado_coordinador;
         $resultados->porCoor = $request->porCoordi;
         $resultados->mentor = $request->mentor;
+        $resultados->resultado_mentor = $request->resultado_mentor;
         $resultados->porMentor = $request->porMentor;
         $resultados->plantel_id = auth()->user()->alumno->plantel->descripcion;
         $resultados->alumno_id = auth()->user()->username;
@@ -369,7 +371,6 @@ class PrincipalController extends Controller
     }
     public function npsStore(Request $request)
     {
-
         $resultados = new Nps();
         $resultados->recomienda_univer = $request->puntos;
         $resultados->comentarios = $request->porque;
