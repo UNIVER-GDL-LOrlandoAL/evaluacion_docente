@@ -1,10 +1,19 @@
 <x-app-layout>
 
-    <!-- Header con nombre de Univer-->
+    <!-- Header con nombre Usuario y boton de Cerrar sesion-->
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Univer') }}
-        </h2>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-4 sm:gap-0">
+            <h2 class="font-semibold text-lg sm:text-xl text-gray-800 leading-tight">
+                Bienvenido/a, {{ Auth::user()->name }}
+            </h2>
+            <button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md w-full sm:w-auto"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Cerrar sesión
+            </button>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                @csrf
+            </form>
+        </div>
     </x-slot>
     <br>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-4">
