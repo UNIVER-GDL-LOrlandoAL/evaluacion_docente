@@ -3,18 +3,25 @@
         <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">Encuesta de Satisfacción</h2>
     </x-slot>
 
-    <form method="POST" action="{{ route('npsStore') }}" aria-label="{{ __('Evaluacion') }}" enctype="multipart/form-data" class="pb-8">
+    <form method="POST"
+          action="{{ route('npsStore') }}"
+          aria-label="{{ __('Evaluacion') }}"
+          enctype="multipart/form-data"
+          class="pb-8"
+          x-data="{
+              puntos: null,
+              enviando: false,
+              get preguntaDinamica() {
+                  if (!this.puntos) return '¿Por qué?';
+                  if (this.puntos <= 6) return '¿En qué consideras que te hemos fallado?';
+                  if (this.puntos >= 9) return '¿Qué es lo que recomiendas o destacas de UNIVER?';
+                  return '¿Qué podríamos hacer para mejorar tu experiencia?';
+              }
+          }"
+          @submit="enviando = true">
         @csrf
 
-        <div x-data="{
-                puntos: null,
-                get preguntaDinamica() {
-                    if (!this.puntos) return '¿Por qué?';
-                    if (this.puntos <= 6) return '¿En qué consideras que te hemos fallado?';
-                    if (this.puntos >= 9) return '¿Qué es lo que recomiendas o destacas de UNIVER?';
-                    return '¿Qué podríamos hacer para mejorar tu experiencia?';
-                }
-            }" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
 
             <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight mb-8">Marca el enunciado que mejor representa tu opinión:</h2>
 
@@ -50,7 +57,11 @@
                 </div>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6 lg:p-8 mb-6" x-show="puntos" x-transition.opacity.duration.300ms style="display: none;">
+            {{-- Bloque dinámico de comentarios --}}
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6 lg:p-8 mb-6"
+                 x-show="puntos"
+                 x-transition.opacity.duration.300ms
+                 style="display: none;">
 
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     <label for="porque" class="font-semibold text-gray-700 text-lg block" x-text="preguntaDinamica"></label>
@@ -62,7 +73,7 @@
                     </label>
                 </div>
 
-                <textarea required name="porque" id="porque" rows="4"
+                <textarea :required="puntos !== null" name="porque" id="porque" rows="4"
                     class="w-full resize-y border-gray-300 shadow-sm rounded-md text-gray-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
                     placeholder="Escribe tus comentarios aquí..."></textarea>
             </div>
@@ -72,10 +83,11 @@
                     class="w-full sm:w-auto text-center transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-10 rounded-md shadow-md">
                     Cancelar
                 </a>
+
                 <button type="submit"
-                    onclick="this.disabled=true; this.innerHTML='Enviando...'; this.form.submit();"
-                    class="w-full sm:w-auto transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-md shadow-md">
-                    Calificar
+                    :disabled="enviando"
+                    class="w-full sm:w-auto transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-10 rounded-md shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span x-text="enviando ? 'Enviando...' : 'Calificar'">Calificar</span>
                 </button>
             </div>
 

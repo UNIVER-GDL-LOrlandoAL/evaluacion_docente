@@ -64,9 +64,9 @@ Route::get('/',function(){
     *Al momento de iniciar el pediodo de evaluacion  descomentar la linea 42 para poder generar los reportes correspondientes.
     *Las lineas 43 y 44 solo se utilizaran en el periodo de evaluacion a plantel usualmente a final de año en el periodo 3C.
 */
-//Route::get('/reportes/{id}','App\Http\Controllers\PrincipalController@reportes')->name('reporte');
-//Route::get('/nps/{id}','App\Http\Controllers\PrincipalController@nps')->name('nps');
-//Route::post('/nps/','App\Http\Controllers\PrincipalController@npsStore')->name('npsStore');
+Route::get('/reportes/{id}','App\Http\Controllers\PrincipalController@reportes')->name('reporte');
+Route::get('/nps/{id}','App\Http\Controllers\PrincipalController@nps')->name('nps');
+Route::post('/nps/','App\Http\Controllers\PrincipalController@npsStore')->name('npsStore');
 
 
 //*Si la ruta no coincide con nada de lo de arriba, mándalo al inicio
