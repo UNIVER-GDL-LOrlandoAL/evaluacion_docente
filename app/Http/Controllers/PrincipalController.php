@@ -371,6 +371,11 @@ class PrincipalController extends Controller
     }
     public function npsStore(Request $request)
     {
+        $validated = $request->validate([
+            'puntos' => ['required', 'integer', 'between:1,10'],
+            'porque' => ['nullable', 'string', 'max:1000'],
+        ]);
+
         $resultados = new Nps();
         $resultados->recomienda_univer = $request->puntos;
         $resultados->comentarios = $request->porque;

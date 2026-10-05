@@ -131,7 +131,7 @@
                     <!-- cym end -->
 
                     {{-- nps--}}
-                    {{-- <!--Lineas de comentario para quitar el NPS quitar cuando sea tiempo de evaluar al plantel!-->
+                     <!--Lineas de comentario para quitar el NPS quitar cuando sea tiempo de evaluar al plantel!-->
                     <!-- nps init -->
                         <tr class="bg-white border-4 border-gray-200">
                             <td>
@@ -168,7 +168,7 @@
                             </td>
                         </tr>
                         <!-- nps end -->
-                        <!--Lineas de comentario para quitar el NPS quitar cuando sea tiempo de evaluar al plantel!--> --}}
+                        <!--Lineas de comentario para quitar el NPS quitar cuando sea tiempo de evaluar al plantel!-->
                     </tbody>
                     <!-- TBODY END -->
                 </table>
