@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /evaluar/
+Disallow: /resultados/
+
+Sitemap: https://evaluacion.univer-gdl.info/
