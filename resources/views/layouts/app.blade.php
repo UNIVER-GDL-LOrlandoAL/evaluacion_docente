@@ -2,11 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="icon" href="{{ asset('img/logo-univer.png') }}" type="image/png">
+        <meta name="description" content="Portal oficial de evaluación docente de la Universidad UNIVER. Ingresa con tu matrícula para evaluar a tus profesores del semestre actual.">
+        <link rel="canonical" href="{{ url()->current() }}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'UNIVER | Evaluación Docente') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">

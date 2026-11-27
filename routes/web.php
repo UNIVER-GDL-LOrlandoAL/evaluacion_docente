@@ -10,6 +10,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\PrincipalController@Index')->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+Route::resources([
+        'principal' => 'App\Http\Controllers\PrincipalController'
+    ]);
+
+});
+/*
 Route::get('/pruebas', function(){
     $usuario = Auth::user()->username;
     $grupo_id = DB::table('alumnos_grupos')->where('id_pwc', $usuario)->value('grupo_id');
@@ -25,15 +33,8 @@ Route::get('/pruebas', function(){
     $mentores = DB::table('mentores_coordinadores')->where('plantel_id', $plantel_id)->where('grupo_id', $grupo_id)->where('isMentor', 1)->get();
     return view('pruebas', compact('coordinadores', 'mentores'));
 });
+*/
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\PrincipalController@Index')->name('dashboard');
-Route::group(['middleware' => ['auth']], function () {
-Route::resources([
-        'principal' => 'App\Http\Controllers\PrincipalController'
-    ]);
-
-});
 
 
 
@@ -50,7 +51,7 @@ Route::get('/',function(){
 * Una vez agregada la informacion a la base de datos procesada como corresponde se bebera descomentar la linea 33 correspondiente al proceso para generar los usuarios.
 */
 
-//Route::get('/proceso', 'App\Http\Controllers\PrincipalController@CrearUsuarios')->name('proceso');
+Route::get('/proceso', 'App\Http\Controllers\PrincipalController@CrearUsuarios')->name('proceso');
 
 /*
     ? Deberia de eliminar estos metodos ya que son muy lentos o en su consecuente mejorarlos o automatizarlos en excel
